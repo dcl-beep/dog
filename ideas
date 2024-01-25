@@ -1,0 +1,32 @@
+server - message_defs - client
+
+server can send:
+- start
+- stop
+- pause
+- update
+...
+
+client can send:
+- heartbeat
+- measurement
+
+message Heartbeat {
+	required int client_id = 1,
+	require ts time = 2,
+	...
+}
+
+message measurement {
+	enum measurement_type {
+		temperature,
+		distance,
+		motion,
+		...
+	}
+
+	required int client_id = 1,
+	required ts time = 2,
+	required measurement_type type = 3,
+	...	
+}
